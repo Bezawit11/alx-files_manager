@@ -13,9 +13,9 @@ class DBClient {
     this.client.connect();
   }
 
-isAlive() {
-  return this.client.isConnected();
-}
+  isAlive() {
+    return this.client.isConnected();
+  }
 }
 
 export const dbClient = new DBClient();
