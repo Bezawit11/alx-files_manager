@@ -16,4 +16,3 @@ isAlive() {
 
 
 export const redisClient = new RedisClient();
-export default redisClient;
