@@ -4,9 +4,8 @@ import dbClient from '../utils/db';
 
 module.exports = {
   postNew: function(req, res){
-    const h = req.headers;
-    const email = h.get('email');
-    const password = h.get('password');
+    const email = req.body.email;
+    const password = req.body.email;
     if (email === 'undefined') {
       res.status(400);
       res.send('Missing email');
@@ -15,7 +14,7 @@ module.exports = {
       res.status(400);
       res.send('Missing password');
     }
-    const a = db.student.find({'email':h.get('email')});
+    const a = db.student.find({'email':email});
     if (a === 'undefined') {
       res.status(400);
       res.send('Already exist');
