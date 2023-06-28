@@ -20,9 +20,9 @@ module.exports = {
       res.status(400);
       res.send('Already exist');
     }
-     const insertion1 = await (await dbClient.usersCollection())
+    const insertion1 = dbClient.usersCollection()
       .insertOne({ email, password: sha1(password) });
-    const user_Id = insertion1.insertedId.toString();
+    const user_id = insertion1.insertedId.toString();
     res.status(201);
     res.json({email, id:user_id});
   }
