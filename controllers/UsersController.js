@@ -14,7 +14,7 @@ module.exports = {
       res.status(400);
       res.send('Missing password');
     }
-    const a = dbClient.usersCollection().findOne({ email });
+    const a = dbClient.users.find({ email });
     if (a === 'undefined') {
       res.status(400);
       res.send('Already exist');
