@@ -16,6 +16,10 @@ class DBClient {
   isAlive() {
     return this.client.isConnected();
   }
+
+  async nbUsers() {
+    return this.client.collection.count();
+  }
 }
 
 export const dbClient = new DBClient();
