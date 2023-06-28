@@ -12,8 +12,8 @@ class DBClient {
     this.client = mongodb.MongoClient(url, { useUnifiedTopology: true });
     this.client.connect();
   }
-
-  isAlive() {
+  
+  const isAlive = () => {
     return this.client.isConnected();
   }
 }
