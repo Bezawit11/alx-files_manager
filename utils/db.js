@@ -1,8 +1,9 @@
-require('dotenv').config()
+import envLoader from './env_loader';
 var MongoClient = require('mongodb').MongoClient;
 
 class DBClient {
   constructor() {
+    envLoader();
     const host = process.env.DB_HOST || 'localhost'
     const port = process.env.DB_PORT || 27017
     const database = process.env.DB_DATABASE || 'files_manager'
