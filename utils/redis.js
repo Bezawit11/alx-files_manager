@@ -13,6 +13,7 @@ class RedisClient {
 isAlive() {
   return this.is_alive;
 }
+}
 
 
 export const redisClient = new RedisClient();
