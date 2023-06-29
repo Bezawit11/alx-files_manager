@@ -18,7 +18,7 @@ class DBClient {
   }
 
   async nbUsers() {
-    return this.usersCollection.countDocuments();
+    return this.client.users.countDocuments({});
   }
 
   async nbFiles() {
