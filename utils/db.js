@@ -10,9 +10,9 @@ class DBClient {
     const database_ = process.env.DB_DATABASE || 'files_manager';
     const our_url = `mongodb://${host}:${port}/${database}`;
     this.client = mongodb.MongoClient(our_url, { useUnifiedTopology: true });
-    this.db = this.client.db(databse_)
-    this.users = this.db.collection('users');
-    this.files = this.db.collection('files');
+    this.DB = this.client.db(databse_);
+    this.users = this.DB.collection('users');
+    this.files = this.DB.collection('files');
   }
 
   isAlive() {
