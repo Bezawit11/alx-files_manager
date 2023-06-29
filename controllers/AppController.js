@@ -7,6 +7,6 @@ module.exports = {
   },
   getStats: function(req, res){
     res.status(200);
-    res.json({ "users": dbClient.nbUsers(), "files": dbClient.nbFiles() });
+    res.send({ users: dbClient.nbUsers(), files: dbClient.nbFiles() });
   }
 };
