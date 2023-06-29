@@ -1,3 +1,5 @@
+import dbClient from './utils/db';
+
 module.exports = {
   getStatus: function(req, res){
     res.status(200);
@@ -5,6 +7,6 @@ module.exports = {
   },
   getStats: function(req, res){
     res.status(200);
-    res.json({ "users": 12, "files": 1231 });
+    res.json({ "users": dbClient.nbUsers(), "files": dbClient.nbFiles() });
   }
 };
