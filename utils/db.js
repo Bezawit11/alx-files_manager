@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 const host = process.env.DB_HOST || 'localhost';
 const port = process.env.DB_PORT || 27017;
 const database_ = process.env.DB_DATABASE || 'files_manager';
-const our_url = `mongodb://${host}:${port}/${database}`;
+const our_url = `mongodb://${host}:${port}/${database_}`;
 
 class DBClient {
   constructor() {
