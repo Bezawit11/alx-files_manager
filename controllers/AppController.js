@@ -1,4 +1,4 @@
-import dbClient from './utils/db';
+import dbClient from '../utils/db';
 
 module.exports = {
   getStatus: function(req, res){
