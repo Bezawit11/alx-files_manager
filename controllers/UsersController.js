@@ -2,9 +2,9 @@ import sha1 from 'sha1';
 import Queue from 'bull/lib/queue';
 import dbClient from '../utils/db';
 
-const userQueue = new Queue('userQueue');
 module.exports = {
   async postNew(req, res) {
+    const userQueue = new Queue('userQueue');
     const { email, password } = req.body;
     if (!email) {
       return res.status(400).send({ error: 'Missing email' });
