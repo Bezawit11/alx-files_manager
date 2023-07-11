@@ -24,4 +24,7 @@ class RedisClient {
     this.client.setex(key, duration, value);
   }
 
-export const redisClient = new RedisClient();
+const redisClient = new RedisClient();
+
+export default redisClient;
+
