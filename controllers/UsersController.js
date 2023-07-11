@@ -3,7 +3,7 @@ import Queue from 'bull/lib/queue';
 import dbClient from '../utils/db';
 
 module.exports = {
-  postNew(req, res) {
+  async postNew(req, res) {
     const { email, password } = req.body;
     if (email === 'undefined') {
       res.status(400);
