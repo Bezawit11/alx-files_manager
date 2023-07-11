@@ -28,4 +28,5 @@ module.exports = {
       userId: r.insertedId.toString(),
     });
     return response.status(201).send(user);
+  },
 };
