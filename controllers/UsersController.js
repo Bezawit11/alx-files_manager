@@ -18,10 +18,14 @@ module.exports = {
       res.status(400);
       res.send('Already exist');
     }
-    const insertion1 = dbClient.users1
+    const r = await dbClient.users1
       .insertOne({ email, password: sha1(password) });
-    const user_id = insertion1.insertedId.toString();
-    res.status(201);
-    res.send({ email, id: user_id });
-  },
+    const user = {
+      id: r.insertedId,
+      email,
+    };
+    await userQueue.add({
+      userId: r.insertedId.toString(),
+    });
+    return response.status(201).send(user);
 };
