@@ -12,7 +12,7 @@ module.exports = {
       return response.status(400).send({ error: 'Missing password' });
     }
     const a = await dbClient.users1.findOne({ email });
-    if (!a) {
+    if (a) {
       return response.status(400).send({ error: 'Already exist' });
     }
     const r = await dbClient.users1
