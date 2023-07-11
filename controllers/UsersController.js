@@ -22,6 +22,6 @@ module.exports = {
       .insertOne({ email, password: sha1(password) });
     const user_id = insertion1.insertedId.toString();
     res.status(201);
-    return res.json({ email, id: user_id });
+    res.send({ email, id: user_id });
   },
 };
