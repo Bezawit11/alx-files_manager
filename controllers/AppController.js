@@ -5,8 +5,8 @@ module.exports = {
     res.status(200);
     res.json({ "redis": redisClient.isAlive(), "db": dbClient.isAlive() });
   },
-  async getStats: function(req, res){
+  getStats: function(req, res){
     res.status(200);
-    res.send({ users: await dbClient.nbUsers(), files: await dbClient.nbFiles() });
+    res.send({ users: dbClient.nbUsers(), files: dbClient.nbFiles() });
   }
 };
