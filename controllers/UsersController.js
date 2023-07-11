@@ -3,8 +3,8 @@ import Queue from 'bull/lib/queue';
 import dbClient from '../utils/db';
 
 module.exports = {
-  postNew: function(req, res){
-    const email = req.body.email;
+  postNew(req, res) {
+    const { email } = req.body;
     const password = req.body.email;
     if (email === 'undefined') {
       res.status(400);
@@ -23,6 +23,6 @@ module.exports = {
       .insertOne({ email, password: sha1(password) });
     const user_id = insertion1.insertedId.toString();
     res.status(201);
-    res.json({email, id:user_id});
-  }
+    res.json({ email, id: user_id });
+  },
 };

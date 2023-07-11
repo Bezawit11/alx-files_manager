@@ -1,13 +1,13 @@
-import dbClient from '../utils/db';
+import dbClient from '../utils/db'; // eslint-disable-line import/no-named-as-default
 import redisClient from '../utils/redis';
 
 module.exports = {
-  getStatus: function(req, res){
+  getStatus(req, res) {
     res.status(200);
-    res.json({ "redis": redisClient.isAlive(), "db": dbClient.isAlive() });
+    res.json({ redis: redisClient.isAlive(), db: dbClient.isAlive() });
   },
-  getStats: async function(req, res){
+  async getStats(req, res) {
     res.status(200);
     res.send({ users: await dbClient.nbUsers(), files: await dbClient.nbFiles() });
-  }
+  },
 };
