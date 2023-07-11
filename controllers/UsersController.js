@@ -5,16 +5,16 @@ import dbClient from '../utils/db';
 module.exports = {
   async postNew(req, res) {
     const { email, password } = req.body;
-    if (email === 'undefined') {
+    if (!email) {
       res.status(400);
       res.send('Missing email');
     }
-    if (password === 'undefined') {
+    if (!password) {
       res.status(400);
       res.send('Missing password');
     }
     const a = await dbClient.users1.findOne({ email });
-    if (a === 'undefined') {
+    if (!a) {
       res.status(400);
       res.send('Already exist');
     }
