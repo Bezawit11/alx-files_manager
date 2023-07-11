@@ -11,3 +11,5 @@ module.exports = {
     res.send({ users: dbClient.nbUsers(), files: dbClient.nbFiles() });
   }
 };
+
+export default AppController;
