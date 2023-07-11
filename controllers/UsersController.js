@@ -4,13 +4,12 @@ import dbClient from '../utils/db';
 
 module.exports = {
   postNew(req, res) {
-    const { email } = req.body;
-    const password = req.body.email;
+    const { email, password } = req.body;
     if (email === 'undefined') {
       res.status(400);
       res.send('Missing email');
     }
-    if (email === 'undefined') {
+    if (password === 'undefined') {
       res.status(400);
       res.send('Missing password');
     }
