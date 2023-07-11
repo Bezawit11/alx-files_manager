@@ -13,12 +13,12 @@ module.exports = {
       res.status(400);
       res.send('Missing password');
     }
-    const a = await dbClient.usersCollection().findOne({ email });
+    const a = await dbClient.usersCollection.findOne({ email });
     if (a === 'undefined') {
       res.status(400);
       res.send('Already exist');
     }
-    const insertion1 = dbClient.usersCollection()
+    const insertion1 = dbClient.usersCollection
       .insertOne({ email, password: sha1(password) });
     const user_id = insertion1.insertedId.toString();
     res.status(201);
