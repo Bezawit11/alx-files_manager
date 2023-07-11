@@ -6,17 +6,14 @@ module.exports = {
   async postNew(req, res) {
     const { email, password } = req.body;
     if (!email) {
-      res.status(400);
-      res.send('Missing email');
+      return response.status(400).send({ error: 'Missing email' });
     }
     if (!password) {
-      res.status(400);
-      res.send('Missing password');
+      return response.status(400).send({ error: 'Missing password' });
     }
     const a = await dbClient.users1.findOne({ email });
     if (!a) {
-      res.status(400);
-      res.send('Already exist');
+      return response.status(400).send({ error: 'Already exist' });
     }
     const r = await dbClient.users1
       .insertOne({ email, password: sha1(password) });
