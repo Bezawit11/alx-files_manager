@@ -7,7 +7,7 @@ module.exports = {
       if (!t) {
         return res.status(401).send({ error: 'Unauthorized' });
       }
-      const decodedCredentials = Buffer.from(credentials, 'base64').toString(
+      const decodedCredentials = Buffer.from(t, 'base64').toString(
       'utf-8',
     );
 
