@@ -1,6 +1,5 @@
 import sha1 from 'sha1';
 import Queue from 'bull/lib/queue';
-import userUtils from '../utils/user';
 import dbClient from '../utils/db'; // eslint-disable-line import/no-named-as-default
 
 module.exports = {
