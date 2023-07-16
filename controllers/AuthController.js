@@ -4,7 +4,7 @@ import sha1 from 'sha1';
 import redisClient from '../utils/redis';
 
 module.exports = {
-    getConnect(req, res) {
+    async getConnect(req, res) {
       const Auth = request.header('Authorization');
       const t = Auth.split(' ')[1];
       if (!t) {
