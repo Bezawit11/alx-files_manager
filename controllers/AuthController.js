@@ -1,12 +1,13 @@
 import dbClient from '../utils/db'; // eslint-disable-line import/no-named-as-default
 import { v4 as uuidv4 } from 'uuid';
 import sha1 from 'sha1';
+import userUtils from '../utils/user';
 import redisClient from '../utils/redis';
 
 module.exports = {
     async getConnect(req, res) {
-      const Auth = req.header('Authorization');
-      const t = Auth.split(' ')[1];
+      const A = req.header('Authorization');
+      const t = A.split(' ')[1];
       if (!t) {
         return res.status(401).send({ error: 'Unauthorized' });
       }
@@ -24,15 +25,11 @@ module.exports = {
       email,
       password: sha1Password,
     });
-
     if (!user) return res.status(401).send({ error: 'Unauthorized' });
-
     const token = uuidv4();
     const key = `auth_${token}`;
     const hoursForExpiration = 24;
-
     await redisClient.set(key, user._id.toString(), hoursForExpiration * 3600);
-
     return res.status(200).send({ token });
   },
   };
