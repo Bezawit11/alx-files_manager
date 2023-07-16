@@ -5,7 +5,7 @@ import redisClient from '../utils/redis';
 
 module.exports = {
     async getConnect(req, res) {
-      const Auth = request.header('Authorization');
+      const Auth = req.header('Authorization');
       const t = Auth.split(' ')[1];
       if (!t) {
         return res.status(401).send({ error: 'Unauthorized' });
@@ -16,7 +16,7 @@ module.exports = {
 
     const [email, password] = decodedCredentials.split(':');
 
-    if (!email || !password) { return response.status(401).send({ error: 'Unauthorized' }); }
+    if (!email || !password) { return res.status(401).send({ error: 'Unauthorized' }); }
 
     const sha1Password = sha1(password);
 
@@ -25,7 +25,7 @@ module.exports = {
       password: sha1Password,
     });
 
-    if (!user) return response.status(401).send({ error: 'Unauthorized' });
+    if (!user) return res.status(401).send({ error: 'Unauthorized' });
 
     const token = uuidv4();
     const key = `auth_${token}`;
@@ -33,6 +33,6 @@ module.exports = {
 
     await redisClient.set(key, user._id.toString(), hoursForExpiration * 3600);
 
-    return response.status(200).send({ token });
+    return res.status(200).send({ token });
   },
   };
